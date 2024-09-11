@@ -12,8 +12,13 @@ frame_size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),   # 비디오 크기 지�
               int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
 print('frame_size =', frame_size)
 
-fourcc = cv2.VideoWriter_fourcc(*'XVID')        # 비디오 저장 방식 지정 
-outV = cv2.VideoWriter('./record.mp4', fourcc, 20.0, frame_size) # 비디오 저장 객체 생성 
+# 원본 fps를 사용하고 싶으면
+fps = cap.get(cv2.CAP_PROP_FPS)
+print(fps) # 29.97002997002997
+
+fourcc = cv2.VideoWriter_fqourcc(*'XVID')        # 비디오 저장 방식 지정
+# outV = cv2.VideoWriter('./record.mp4', fourcc, 20.0, frame_size) # 비디오 저장 객체 생성
+outV = cv2.VideoWriter('./record.mp4', fourcc, fps, frame_size) # 비디오 저장 객체 생성
 
 while True:
     ret, frame = cap.read()  # 비디오를 구성하는 프레임 획득
@@ -22,7 +27,7 @@ while True:
         print('프레임 획득에 실패하여 루프를 나갑니다.')
         break
 
-    outV.write(frame)  # 비디오로 프레임 저장
+    outV.write(frame)  # write(): 읽어들인 프레임을 저장!
     cv2.imshow('Video display', frame)
 
     key = cv2.waitKey(1)  # 1밀리초 동안 키보드 입력 기다림
