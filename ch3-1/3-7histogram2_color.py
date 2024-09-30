@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img=cv2.imread('soccer.jpg')
+# img=cv2.imread('soccer.jpg')
+img = cv2.imread('lenna256.png')
 print(img.shape)
 cv2.imshow('Color image',img)
 

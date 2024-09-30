@@ -12,6 +12,7 @@ ax1.axis("off")
 ax1.imshow(gray,cmap='gray')
 
 h=cv2.calcHist([gray],[0],None,[256],[0,256])	    # 히스토그램을 구해 출력
+# print('histogram', h)
 ax2=fig.add_subplot(rows,cols,2)
 ax2.plot(h,color='r',linewidth=1)
 
@@ -23,5 +24,10 @@ ax3.imshow(equal,cmap='gray')
 h=cv2.calcHist([equal],[0],None,[256],[0,256])	    # 히스토그램을 구해 출력
 ax4=fig.add_subplot(rows,cols,4)
 ax4.plot(h,color='r',linewidth=1)
+
+equal2=cv2.equalizeHist(equal)			            # 히스토그램을 평활화하고 출력
+ax5=fig.add_subplot(rows,cols,5)
+ax4.plot(h,color='r',linewidth=1)
+
 
 plt.show()

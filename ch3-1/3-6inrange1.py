@@ -8,6 +8,9 @@ upperb1 = (20, 180, 255)
 dst1 = cv2.inRange(hsv1, lowerb1, upperb1)
 cv2.imshow('hands', dst1)
 
+dst_skin = cv2.bitwise_and(src1, src1, mask=dst1)
+cv2.imshow('hands - skin', dst_skin)
+
 #2 flower
 src2 = cv2.imread('flower.jpg')
 hsv2 = cv2.cvtColor(src2,cv2.COLOR_BGR2HSV)
