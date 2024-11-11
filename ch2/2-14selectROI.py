@@ -9,10 +9,18 @@ x, y, w, h = cv2.selectROI(img) 	# 관심 영역을 선택
 print("Selected ROI:", x, y, w, h)
 
 roi = img[y:y+h, x:x+w]	# 선택한 영역만 잘라냄
+# blur_roi = cv2.blur(roi, (25, 25))
 
-cv2.imwrite('roi.jpg', roi)	# 잘라낸 영역을 저장
+resize_roi = cv2.resize(roi, (w//15, h//15))
+resize_roi = cv2.resize(resize_roi, (w, h), interpolation=cv2.INTER_NEAREST)
 
-cv2.imshow('ROI', roi)
+
+img[y:y+h, x:x+w] = resize_roi
+
+
+# cv2.imwrite('roi.jpg', roi)	# 잘라낸 영역을 저장
+
+cv2.imshow('ROI - Blur', img)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()

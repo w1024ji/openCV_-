@@ -26,7 +26,7 @@ ax4=fig.add_subplot(rows,cols,4)
 ax4.plot(h,color='r',linewidth=1)
 
 equal2=cv2.equalizeHist(equal)			            # 히스토그램을 평활화하고 출력
-ax5=fig.add_subplot(rows,cols,5)
+ax5=fig.add_subplot(rows,cols,4)
 ax4.plot(h,color='r',linewidth=1)
 
 
